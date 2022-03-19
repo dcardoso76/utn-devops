@@ -8,18 +8,23 @@ const PORT = 3000;
 const HOST = '0.0.0.0';
 
 let connection = mysql.createConnection({
-  host: 'utn-devops.localhost',
+  host: 'mysql',
   user: 'root',
   password: 'root',
-  database: 'devops_app'
+  database: 'devops_app',
+  port:3306
 });
 
 // App
 const app = express();
 app.get('/', (req, res) => {
-  res.send('Hello World');
-  console.log("Conexion OK")
+  connection.query("SELECT * FROM welcome", function (err, result) {
+    if (err) throw err;
+    console.log("Conexion Ok", result);
+  res.send(result);
+  });
 });
 
 app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+console.log(`Running on http://${HOST}:8080`);
+
