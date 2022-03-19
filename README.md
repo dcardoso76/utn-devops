@@ -9,7 +9,7 @@ vagrant ssh
 
 en cd /vagrant/docker/
 
-sudo docker-compose up -d
+sudo docker-compose up -d --build
 
 Luego para cargar la BD:
 
