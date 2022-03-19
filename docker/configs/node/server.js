@@ -15,13 +15,14 @@ let connection = mysql.createConnection({
   port:3306
 });
 
+
 // App
 const app = express();
 app.get('/', (req, res) => {
   connection.query("SELECT * FROM welcome", function (err, result) {
     if (err) throw err;
     console.log("Conexion Ok", result);
-  res.send(result);
+    res.send(JSON.stringify(result,["id","description"]));
   });
 });
 

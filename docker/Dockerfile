@@ -13,4 +13,4 @@ RUN npm install
 RUN npm install mysql
 
 # ejecucion
-CMD [ "node", "server.js" ]
+CMD [ "npm", "run", "start.dev" ]

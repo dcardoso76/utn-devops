@@ -5,9 +5,13 @@
     "author": "Grupo-4 DevOps UTN",
     "main": "server.js",
     "scripts": {
-        "start": "node server.js"
+        "start": "node server.js",
+        "start.dev": "nodemon"
     },
     "dependencies": {
         "express": "^4.16.1"
-    }
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+      }
 }
