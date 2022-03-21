@@ -19,7 +19,7 @@ let connection = mysql.createConnection({
 // App
 const app = express();
 app.get('/', (req, res) => {
-  connection.query("SELECT * FROM welcome", function (err, result) {
+  connection.query("SELECT * FROM grupo4", function (err, result) {
     if (err) throw err;
     console.log("Conexion Ok", result);
     res.send(JSON.stringify(result,["id","description"]));
