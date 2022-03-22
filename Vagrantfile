@@ -65,7 +65,7 @@ Vagrant.configure("2") do |config|
 
   # Con esta sentencia lo que hara Vagrant es transferir este archivo a la máquina Ubuntu
   # y ejecutarlo una vez iniciado. En este caso ahora tendrá el aprovisionamiento para la instalación de Docker
-  config.vm.provision :shell, path: "Vagrant.provision.sh"
+  config.vm.provision :shell, path: "vagrant.provision.sh"
 
   #
 
