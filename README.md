@@ -2,22 +2,22 @@
 Repositorio para las prácticas del curso "DevOps, integración y agilidad continua" de la UTN
 
 Ejecutar:
-
+```bash
 vagrant up --provision
 
 vagrant ssh
+```
+En la VM ejecutar:
+```bash
+sudo puppet cert sign utn-devops.localhost
+sudo puppet agent -t --debug
+```
+El segundo comando ejecuta la instalacion de Jenkins mediante Puppet.
+Una vez que termina de ejecutarse, ya se puede acceder a Jenkins para la configuracion inicial
 
-en cd /vagrant/docker/
-
-sudo docker-compose up -d --build
-
-Luego para cargar la BD:
-
-sudo docker exec -i -t mysql /bin/bash
-
-mysql -uroot -proot devops_app < /tmp/script.sql
-
-exit
-
-URL:
 http://utn-devops.localhost:8080/
+
+Para la configuracion se debe ingresar una clave generada automaticamente durante la instalacion. La misma se debe leer con el siguiente comando:
+```bash
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
