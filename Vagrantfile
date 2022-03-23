@@ -5,6 +5,9 @@ Vagrant.configure("2") do |config|
 # redireccion de puertos
   config.vm.network "forwarded_port", guest: 8080, host: 8080
   config.vm.network "forwarded_port", guest: 4400, host: 4400
+  config.vm.network "forwarded_port", guest: 8081, host: 8081
+  config.vm.network "forwarded_port", guest: 8082, host: 8082
+  config.vm.network "forwarded_port", guest: 8140, host: 8140
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -62,6 +65,16 @@ Vagrant.configure("2") do |config|
   # una definición del firewall de Ubuntu para permitir el tráfico de red que se redirecciona internamente, configuración
   # necesaria para Docker. Luego será copiado al lugar correcto por el script Vagrant.bootstrap.sh
   config.vm.provision "file", source: "hostConfigs/ufw", destination: "/tmp/ufw"
+  config.vm.provision "file", source: "hostConfigs/etc_hosts.txt", destination: "/tmp/etc_hosts.txt"
+  # Archivos de Puppet
+  config.vm.provision "file", source: "hostConfigs/puppet/site.pp", destination: "/tmp/site.pp"
+  config.vm.provision "file", source: "hostConfigs/puppet/init.pp", destination: "/tmp/init.pp"
+  config.vm.provision "file", source: "hostConfigs/puppet/init_jenkins.pp", destination: "/tmp/init_jenkins.pp"
+  config.vm.provision "file", source: "hostConfigs/puppet/puppet-master.conf", destination: "/tmp/puppet-master.conf"
+  config.vm.provision "file", source: "hostConfigs/puppet/.env", destination: "/tmp/env"
+  # Archivo para Jenkins
+  config.vm.provision "file", source: "hostConfigs/jenkins/default_jenkins", destination: "/tmp/jenkins_default"
+  config.vm.provision "file", source: "hostConfigs/jenkins/init_d", destination: "/tmp/jenkins_init_d"
 
   # Con esta sentencia lo que hara Vagrant es transferir este archivo a la máquina Ubuntu
   # y ejecutarlo una vez iniciado. En este caso ahora tendrá el aprovisionamiento para la instalación de Docker
