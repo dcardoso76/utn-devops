@@ -32,6 +32,11 @@ class jenkins {
         notify => Service['jenkins'],
     }
 
+    exec { 'replace_jenkins_port':
+        command => "/bin/sed -i -- 's/JENKINS_PORT=8080/JENKINS_PORT=8082/g' /lib/systemd/system/jenkins.service",
+        notify => Service['jenkins'],
+    }
+
     # Notifico al gestor de servicios que un archivo cambio
     exec { 'reload-systemctl':
         command => '/bin/systemctl daemon-reload',
