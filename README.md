@@ -9,6 +9,7 @@ vagrant ssh
 ```
 En la VM ejecutar:
 ```bash
+sudo puppet agent -t --debug
 sudo puppet cert sign utn-devops.localhost
 sudo puppet agent -t --debug
 ```
