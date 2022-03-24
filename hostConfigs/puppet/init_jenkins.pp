@@ -32,7 +32,7 @@ class jenkins {
         notify => Service['jenkins'],
     }
 
-    exec { 'replace_jenkins_port':
+    exec { 'replace_jenkins_port_service':
         command => "/bin/sed -i -- 's/JENKINS_PORT=8080/JENKINS_PORT=8082/g' /lib/systemd/system/jenkins.service",
         notify => Service['jenkins'],
     }

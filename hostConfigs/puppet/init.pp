@@ -22,7 +22,7 @@ exec { 'apt-update':
 }
 
 # Instalación del paquete docker. Tambien
- es para ejemplicar que se puede declarar
+#es para ejemplicar que se puede declarar
 # como requisito que se ejecuten una serie de comandos antes de la instalación
 package { 'docker-ce':
   require => Exec['apt-update','agrego-repositorio','apt-update'],       
