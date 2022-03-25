@@ -55,10 +55,14 @@ service { 'docker':
   ensure => running,
 }
 
-exec { 'config-app':
-  command => 'docker-compose -f /vagrant/docker/node/docker-compose.yml up -d',       
-  path => '/usr/bin',  
-  onlyif => 'test $(docker ps |grep nodejs)',
+exec { 'docker-up':
+  command => '/usr/local/bin/docker-compose -f /vagrant/docker/docker-compose.yml up -d',       
 }
+
+exec { 'config-mysql':
+  require => Exec['docker-up'],
+  command => '/usr/bin/docker exec mysql mysql -uroot -proot devops_app < /vagrant/docker/configs/mysql/script.sql',
+}
+
  
 }
