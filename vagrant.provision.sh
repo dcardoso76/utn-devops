@@ -60,7 +60,7 @@ if [ ! -x "$(command -v puppet)" ]; then
 
   # muevo los archivos que utiliza Puppet
   sudo mv -f /tmp/site.pp $ENVIRONMENT_DIR/manifests #/etc/puppet/manifests/
-  sudo mv -f /tmp/init.pp $PUPPET_MODULES/docker_install/manifests/init.pp
+  sudo mv -f /tmp/init_docker.pp $PUPPET_MODULES/docker_install/manifests/init.pp
   sudo mv -f /tmp/env $PUPPET_MODULES/docker_install/files
   sudo mv -f /tmp/init_jenkins.pp $PUPPET_MODULES/jenkins/manifests/init.pp
   sudo mv -f /tmp/jenkins_default $PUPPET_MODULES/jenkins/files/jenkins_default

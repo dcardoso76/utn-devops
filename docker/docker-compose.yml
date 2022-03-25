@@ -18,4 +18,5 @@ services:
       - "4400:3306"
     volumes:
       - /var/db/mysql:/var/lib/mysql
-      - "/vagrant/docker/configs/mysql/script.sql:/tmp/script.sql"
+      - "./configs/mysql/script.sql:/tmp/script.sql"      
+      - "./configs/mysql/exec-script.sh:/tmp/exec-script.sh"
