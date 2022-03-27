@@ -1,1 +1,1 @@
-mysql -s -uroot -proot devops_app < /tmp/script.sql
+mysql -s devops_app < /tmp/script.sql

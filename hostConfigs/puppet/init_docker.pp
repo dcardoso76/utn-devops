@@ -40,11 +40,11 @@ class docker_install {
 		unless  => ['test $(docker ps -q -f name=nodejs)', 'test $(docker ps -q -f name=mysql)'],
 	}
 
-	exec { 'config-db':
-		path    => $bin_paths,
-		command => 'docker exec mysql /bin/bash /tmp/exec-script.sh',
-		require => Service['docker'],
-		onlyif  => 'test $(docker ps -q -f name=mysql)',
-	}
+	#exec { 'config-db':
+	#	path    => $bin_paths,
+	#	command => 'docker exec mysql /bin/bash /tmp/exec-script.sh',
+	#	require => Service['docker'],
+	#	onlyif  => 'test $(docker ps -q -f name=mysql)',
+	#}
 
 }

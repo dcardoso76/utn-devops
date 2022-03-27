@@ -2,11 +2,11 @@
 FROM node:16
 
 # Crea el directorio
-WORKDIR /usr/src/app
+WORKDIR /srv/
 
-# copia los archivos
-COPY ./configs/node/package*.json ./
-COPY ./configs/node/server.js ./
+RUN git clone https://github.com/dcardoso76/utn-devops-app.git
+
+WORKDIR /srv/utn-devops-app/src
 
 # instalacion
 RUN npm install
